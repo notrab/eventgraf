@@ -1,0 +1,14 @@
+type Event @model @search {
+  title: String!
+  slug: String! @unique
+  description: String
+  starts: DateTime!
+  ends: DateTime
+  cover: URL
+  attendees: [Attendee]
+}
+
+type Attendee @model {
+  name: String!
+  email: Email!
+}
