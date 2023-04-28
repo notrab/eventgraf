@@ -1,38 +1,24 @@
 import type { V2_MetaFunction } from "@remix-run/node";
+import { SignedIn, SignedOut } from "@clerk/remix";
+import { Link } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: "New Remix App" }];
+  return [{ title: "Browse" }];
 };
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1 className="text-3xl font-bold">Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <h1 className="title">Welcome to my store!</h1>
+      <SignedIn>
+        <p className="text-green-800">Hello user!</p>
+      </SignedIn>
+      <SignedOut>
+        <p className="text-red-500">Hello guest!</p>
+        <p className="text-text-500">
+          <Link to="/sign-in">Sign In</Link>
+        </p>
+      </SignedOut>
+    </>
   );
 }
