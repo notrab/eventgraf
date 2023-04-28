@@ -1,9 +1,15 @@
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { V2_MetaFunction, LoaderFunction } from "@remix-run/node";
 import { SignedIn, SignedOut } from "@clerk/remix";
 import { Link } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: "Browse" }];
+};
+
+export const loader: LoaderFunction = async ({ context, params }) => {
+  console.log({ context, params });
+
+  return null;
 };
 
 export default function Index() {

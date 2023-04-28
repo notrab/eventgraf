@@ -5,7 +5,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
 import type {
   V2_MetaFunction,
@@ -39,8 +38,6 @@ export const loader: LoaderFunction = async (args) =>
 export const CatchBoundary = ClerkCatchBoundary();
 
 function App() {
-  const { token } = useLoaderData<typeof loader>();
-
   return (
     <html lang="en">
       <head>
@@ -50,7 +47,6 @@ function App() {
         <Links />
       </head>
       <body className="bg-white">
-        <pre>{JSON.stringify({ token }, null, 2)}</pre>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
