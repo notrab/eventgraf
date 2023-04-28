@@ -22,18 +22,7 @@ export const meta: V2_MetaFunction = () => {
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
-export const loader: LoaderFunction = async (args) =>
-  rootAuthLoader(
-    args,
-    async ({ request }) => {
-      const { getToken } = request.auth;
-
-      const token = await getToken({ template: process.env.JWT_TEMPLATE });
-
-      return { token };
-    },
-    { loadUser: true }
-  );
+export const loader: LoaderFunction = (args) => rootAuthLoader(args);
 
 export const CatchBoundary = ClerkCatchBoundary();
 
