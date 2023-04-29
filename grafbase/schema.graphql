@@ -20,3 +20,31 @@ type Attendee @model {
   name: String!
   email: Email!
 }
+
+type Customer @model {
+  name: String!
+  email: Email! @unique
+  password: String!
+  orders: [Order]
+}
+
+type Order @model {
+  total: Int!
+  items: [OrderItem]
+  billingAddress: Address!
+  shippingAddress: Address!
+}
+
+type OrderItem {
+  name: String!
+  quantity: Int!
+  unitPrice: Int!
+}
+
+type Address {
+  line1: String!
+  line2: String
+  city: String!
+  zip: String!
+  country: String!
+}
